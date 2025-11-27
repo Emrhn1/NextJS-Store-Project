@@ -1,23 +1,19 @@
-import db from "@/utils/db";
-import { Key, ReactElement, JSXElementConstructor, ReactNode, ReactPortal } from "react";
-
-async function AboutPage() {
-    const products = await db.testProfile.create({
-        data: {
-            name: "Alice",
-        }
-    })
-    const users = await db.testProfile.findMany()
+function AboutPage() {
     return (
-        <div>
-            {users.map((user: { id: Key | null | undefined; name: string | number | bigint | boolean | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<string | number | bigint | boolean | ReactPortal | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | null | undefined> | null | undefined; })=> {
-                return (
-                    <h2 key={user.id} className="text-2xl font-bold">
-                        {user.name}
-                    </h2>
-                )
-            })}
-        </div>
+        <section>
+            <h1 className='flex flex-wrap gap-2 sm:gap-x-6 items-center justify-center text-4xl font-bold leading-none tracking-wide sm:text-6xl'>
+                We love
+                <span className='bg-primary py-2 px-4 rounded-lg tracking-widest text-white'>
+          store
+        </span>
+            </h1>
+            <p className='mt-6 text-lg tracking-wide leading-8 max-w-2xl mx-auto text-muted-foreground'>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero hic
+                distinctio ducimus temporibus nobis autem laboriosam repellat, magni
+                fugiat minima excepturi neque, tenetur possimus nihil atque! Culpa nulla
+                labore nam?
+            </p>
+        </section>
     )
 }
 export default AboutPage;
