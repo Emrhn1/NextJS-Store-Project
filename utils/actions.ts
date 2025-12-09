@@ -2,7 +2,7 @@ import prisma from "@/utils/db";
 import {redirect} from "next/navigation";
 
 export const fetchFeaturedProducts = async () => {
-    const fetchData = prisma.product.findMany({
+    const fetchData = await prisma.product.findMany({
         where: {
             featured: true
         }
