@@ -2,8 +2,12 @@ import React from "react"
 import {Button} from "../ui/button"
 import Link from "next/link"
 import { IoMdCart } from "react-icons/io";
-const CartButton = () => {
-    const numItemsinCart = 10;
+import { fetchCartItems } from "@/utils/actions";
+
+const CartButton = async () => {
+    const cart = await fetchCartItems();
+    const numItemsinCart = cart ? cart.numItemsInCart : 0;
+
     return (
         <Button asChild variant="outline" size="icon" className="flex justify-center hover:bg-blue-100 items-center relative">
             <Link href="/cart">
